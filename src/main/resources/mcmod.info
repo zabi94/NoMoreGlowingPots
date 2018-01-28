@@ -1,0 +1,16 @@
+[
+{
+  "modid": "nomoreglowingpots",
+  "name": "NoMoreGlowingPots",
+  "description": "Remove that useless glint from pots",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ZaBi94"],
+  "credits": "[Formerly part of Extra ALchemy]",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
