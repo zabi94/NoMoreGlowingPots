@@ -6,7 +6,9 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
 
 import net.minecraft.launchwrapper.IClassTransformer;
 
@@ -37,8 +39,12 @@ public class PotionTransformer implements IClassTransformer {
 						if (mn.desc.equals(s_desc_srg)||mn.desc.equals(s_desc_obf)) {
 							Log.d("Method matched!");
 							InsnList il = new InsnList();
-							il.add(new InsnNode(Opcodes.ICONST_0)); //Load false (Integer 0)
-							il.add(new InsnNode(Opcodes.IRETURN));	//Return loaded integer 
+							
+							il.add(new VarInsnNode(Opcodes.ALOAD, 1));
+							il.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "zabi/minecraft/nomoreglowingpots/Snippets", "shouldGlow", mn.desc, false));
+							il.add(new InsnNode(Opcodes.IRETURN));
+							
+							
 							mn.instructions = il;
 							transformed = true;
 						} else {
