@@ -1,70 +1,24 @@
-buildscript {
-    repositories {
-        jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-    }
+plugins {
+	id 'fabric-loom' version '0.2.0-SNAPSHOT'
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 version = "1.1"
-group = "zabi.minecraft.nomoreglowingpots" 
 archivesBaseName = "nomoreglowingpots"
 
-sourceCompatibility = targetCompatibility = '1.8'
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
-}
-
 minecraft {
-    version = "1.12.2-14.23.1.2604"
-    runDir = "run"
-    coreMod = "zabi.minecraft.nomoreglowingpots.LoadingPlugin"
-    mappings = "snapshot_20171003"
-    replace '@VERSION@', project.version
-    replace '@FINGERPRINT@', project.findProperty('signSHA1')
 }
 
 dependencies {
+	minecraft "com.mojang:minecraft:18w50a"
+	mappings "net.fabricmc:yarn:18w50a.90"
+	modCompile "net.fabricmc:fabric-loader:0.3.0.74"
+	modCompile "net.fabricmc:fabric:0.1.2.63"
 }
 
-jar {
-	manifest {
-		attributes 'FMLCorePlugin': 'zabi.minecraft.nomoreglowingpots.LoadingPlugin'
-		attributes 'FMLCorePluginContainsFMLMod': 'true'
-	}
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
 }
-
-processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
-
-task signJar(type: SignJar, dependsOn: reobfJar) {
-
-    onlyIf {
-        project.hasProperty('keyStore')
-    }
-
-    keyStore = project.findProperty('keyStore')
-    alias = project.findProperty('keyStoreAlias')
-    storePass = project.findProperty('keyStorePass')
-    keyPass = project.findProperty('keyStoreKeyPass')
-    inputFile = jar.archivePath
-    outputFile = jar.archivePath
-}
-
-build.dependsOn signJar
