@@ -16,8 +16,8 @@ public class GlintRemover extends Item {
 		super(settings);
 	}
 
-	@Inject(method = "hasEnchantmentGlint", at = @At("HEAD"), require = 1)
+	@Inject(method = "hasEnchantmentGlint", at = @At("HEAD"), require = 1, cancellable = true)
 	public void hasEnchantmentGlow(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
-		info.setReturnValue(super.hasEnchantmentGlint(stack));;
+		info.setReturnValue(super.hasEnchantmentGlint(stack));
 	}
 }
