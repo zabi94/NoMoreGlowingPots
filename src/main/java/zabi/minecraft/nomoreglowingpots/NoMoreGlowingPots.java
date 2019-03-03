@@ -4,7 +4,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 
-@Mod(clientSideOnly=true, modid=NoMoreGlowingPots.MOD_ID, name=NoMoreGlowingPots.NAME, version=NoMoreGlowingPots.VERSION, certificateFingerprint = NoMoreGlowingPots.FINGERPRINT)
+@Mod(
+		clientSideOnly=true, 
+		modid=NoMoreGlowingPots.MOD_ID, 
+		name=NoMoreGlowingPots.NAME, 
+		version=NoMoreGlowingPots.VERSION, 
+		certificateFingerprint = NoMoreGlowingPots.FINGERPRINT,
+		acceptedMinecraftVersions = NoMoreGlowingPots.MC_VERSION
+)
 public class NoMoreGlowingPots {
 	
 	public static final String MOD_ID = "nomoreglowingpots";
@@ -15,7 +22,7 @@ public class NoMoreGlowingPots {
 	
 	@EventHandler
 	public void fingerprintViolation(FMLFingerprintViolationEvent evt) {
-		Log.e("Fingerprint doesn't match! The mod may have been modified, be careful!\n\nYou should only download mods from authoritative sources, like https://minecraft.curseforge.com\n\n");
+		Log.e("\n\nNoMoreGlowingPots fingerprint doesn't match! The mod may have been modified, be careful!\n\nYou should only download mods from authoritative sources, like https://minecraft.curseforge.com\n\n");
 	}
 	
 }
