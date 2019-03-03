@@ -12,10 +12,23 @@ minecraft {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:18w50a"
-	mappings "net.fabricmc:yarn:18w50a.90"
-	modCompile "net.fabricmc:fabric-loader:0.3.0.74"
-	modCompile "net.fabricmc:fabric:0.1.2.63"
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
+	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
+	modCompile "net.fabricmc:fabric:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	from(sourceSets.main.resources.srcDirs) {
+		include "fabric.mod.json"
+		expand "version": project.version
+	}
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude "fabric.mod.json"
+	}
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
