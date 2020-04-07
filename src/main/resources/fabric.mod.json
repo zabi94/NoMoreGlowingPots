@@ -1,10 +1,28 @@
 {
-  "id": "nomoreglowingpots",
-  "name": "No More Glowing Pots",
-  "description": "Removes glint from potion items",
-  "version": "${version}",
-  "side": "client",
-  "mixins": {
-    "client": "killglow.json"
-  }
+	"schemaVersion": 1,
+	"id": "nomoreglowingpots",
+	"version": "${version}",
+	"name": "No More Glowing Pots",
+	"description": "Remove that useless item glint from potions and see their true color!",
+	"authors": [
+		{
+			"name": "zabi94",
+			"contact": {
+				"twitter": "https://twitter.com/zabi94"
+			}
+		}
+	],
+	"contact": {
+		"homepage": "https://github.com/zabi94/NoMoreGlowingPots",
+		"sources": "https://github.com/zabi94/NoMoreGlowingPots",
+		"issues": "https://github.com/zabi94/NoMoreGlowingPots/issues"
+	},
+	"license": "MIT",
+	"environment": "client",
+	"mixins": [
+		{
+			"config": "killglow.json",
+			"environment": "client"
+		}
+	]
 }
