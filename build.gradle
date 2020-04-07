@@ -5,8 +5,8 @@ plugins {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "1.14-1.0.0"
-archivesBaseName = "nomoreglowingpots"
+version = "${project.mod_version}"
+archivesBaseName = "nomoreglowingpots-${project.minecraft_version}"
 
 minecraft {
 }
