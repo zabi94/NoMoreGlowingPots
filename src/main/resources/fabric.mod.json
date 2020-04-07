@@ -4,9 +4,6 @@
   "description": "Removes glint from potion items",
   "version": "1.0.0",
   "side": "client",
-  "initializers": [
-    "zabi.minecraft.nomoreglowingpots.NoMoreGlowingPots"
-  ],
   "mixins": {
     "client": "killglow.json"
   }
