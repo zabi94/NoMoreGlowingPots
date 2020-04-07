@@ -25,3 +25,5 @@ run/
 NoMoreGlowingPots_Server\.launch
 
 NoMoreGlowingPots_Client\.launch
+
+*.launch
