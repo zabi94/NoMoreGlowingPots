@@ -7,9 +7,6 @@
   "initializers": [
     "zabi.minecraft.nomoreglowingpots.NoMoreGlowingPots"
   ],
-  "requires": {
-    "fabric": "*"
-  },
   "mixins": {
     "client": "killglow.json"
   }
